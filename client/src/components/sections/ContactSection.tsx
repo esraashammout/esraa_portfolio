@@ -1,26 +1,9 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Linkedin, Github, Send } from "lucide-react";
+import { Mail, Phone, Loader2 } from "lucide-react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8 },
-  },
-};
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -28,6 +11,7 @@ export default function ContactSection() {
     email: "",
     message: "",
   });
+  const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (
@@ -40,185 +24,200 @@ export default function ContactSection() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Here you would typically send the form data to a backend
-    console.log("Form submitted:", formData);
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: "", email: "", message: "" });
-    }, 3000);
+    setLoading(true);
+
+    try {
+      const response = await fetch("https://formspree.io/f/mnnraqgg", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData ),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        setFormData({ name: "", email: "", message: "" });
+        setTimeout(() => setSubmitted(false), 3000);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const contactMethods = [
-    {
-      icon: Mail,
-      label: "Email",
-      value: "esraashammout788@gmail.com",
-      href: "mailto:esraashammout788@gmail.com",
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
     },
-    {
-      icon: Linkedin,
-      label: "LinkedIn",
-      value: "linkedin.com/in/esraashammout",
-      href: "https://linkedin.com/in/esraashammout",
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6 },
     },
-    {
-      icon: Github,
-      label: "GitHub",
-      value: "github.com/esraashammout",
-      href: "https://github.com/esraashammout",
-    },
-  ];
+  };
 
   return (
-    <section
-      id="contact"
-      className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-900 to-gray-800 text-white"
-      data-aos="fade-up"
-    >
-      <div className="max-w-6xl mx-auto">
-        {/* Section Header */}
+    <section id="contact" className="py-20 px-4 bg-gradient-to-b from-background to-secondary/20">
+      <div className="max-w-4xl mx-auto">
         <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 } as any}
-          viewport={{ once: false }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">Get In Touch</h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-400 to-blue-600 mx-auto mb-4"></div>
-          <p className="text-lg text-gray-300">
-            I'm always open to new opportunities and collaborations
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">Get In Touch</h2>
+          <p className="text-lg text-muted-foreground">
+            Have a project in mind? Let's collaborate and create something amazing together.
           </p>
         </motion.div>
 
-        {/* Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Methods */}
+        <div className="grid md:grid-cols-2 gap-12">
+          {/* Contact Info */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false }}
+            viewport={{ once: true }}
+            className="space-y-8"
           >
-            <h3 className="text-2xl font-bold mb-8">Connect With Me</h3>
+            <motion.div variants={itemVariants} className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                <Mail className="w-6 h-6 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-lg mb-1">Email</h3>
+                <a
+                  href="mailto:esraashammout788@gmail.com"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  esraashammout788@gmail.com
+                </a>
+              </div>
+            </motion.div>
 
-            <div className="space-y-6">
-              {contactMethods.map((method, index) => {
-                const Icon = method.icon;
-                return (
-                  <motion.a
-                    key={index}
-                    href={method.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    variants={itemVariants}
-                    whileHover={{ x: 10 }}
-                    className="flex items-start gap-4 p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors group"
-                  >
-                    <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-blue-500 transition-colors">
-                      <Icon className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-400">{method.label}</p>
-                      <p className="text-lg font-semibold text-white">
-                        {method.value}
-                      </p>
-                    </div>
-                  </motion.a>
-                );
-              })}
-            </div>
+            <motion.div variants={itemVariants} className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                <Phone className="w-6 h-6 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-lg mb-1">Phone</h3>
+                <a
+                  href="tel:+963984047425"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  +963 984 047 425
+                </a>
+              </div>
+            </motion.div>
 
-            {/* Social Stats */}
-            <motion.div
-              variants={itemVariants}
-              transition={{ duration: 0.8 } as any}
-              className="mt-12 p-6 bg-gray-800 rounded-lg"
-            >
-              <p className="text-gray-300 mb-4">
-                Let's build something amazing together. Whether you have a project
-                in mind or just want to chat about technology, feel free to reach
-                out!
-              </p>
-              <p className="text-blue-400 font-semibold">
-                Response time: Usually within 24 hours
-              </p>
+            <motion.div variants={itemVariants} className="pt-8">
+              <h3 className="font-semibold text-lg mb-4">Follow Me</h3>
+              <div className="flex gap-4">
+                <a
+                  href="https://github.com/esraashammout"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary hover:text-white transition-all"
+                >
+                  <span className="text-sm font-bold">GH</span>
+                </a>
+                <a
+                  href="https://linkedin.com/in/esraa-shammout"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary hover:text-white transition-all"
+                >
+                  <span className="text-sm font-bold">LI</span>
+                </a>
+              </div>
             </motion.div>
           </motion.div>
 
           {/* Contact Form */}
           <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false }}
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="bg-card rounded-lg p-8 border border-border"
           >
             <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Name Input */}
-              <motion.div variants={itemVariants}>
+              <div>
                 <label className="block text-sm font-medium mb-2">Name</label>
-                <input
+                <Input
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors"
                   placeholder="Your name"
+                  required
+                  disabled={loading}
+                  className="w-full"
                 />
-              </motion.div>
+              </div>
 
-              {/* Email Input */}
-              <motion.div variants={itemVariants}>
+              <div>
                 <label className="block text-sm font-medium mb-2">Email</label>
-                <input
+                <Input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors"
                   placeholder="your@email.com"
+                  required
+                  disabled={loading}
+                  className="w-full"
                 />
-              </motion.div>
+              </div>
 
-              {/* Message Input */}
-              <motion.div variants={itemVariants}>
+              <div>
                 <label className="block text-sm font-medium mb-2">Message</label>
-                <textarea
+                <Textarea
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
+                  placeholder="Your message here..."
                   required
+                  disabled={loading}
                   rows={5}
-                  className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors resize-none"
-                  placeholder="Your message..."
-                ></textarea>
-              </motion.div>
+                  className="w-full"
+                />
+              </div>
 
-              {/* Submit Button */}
-              <motion.div variants={itemVariants}>
-                <Button
-                  type="submit"
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 font-semibold flex items-center justify-center gap-2 group"
-                >
-                  <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  Send Message
-                </Button>
-              </motion.div>
-
-              {/* Success Message */}
-              {submitted && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.3 } as any}
-                className="p-4 bg-green-900 border border-green-700 rounded-lg text-green-300"
+              <Button
+                type="submit"
+                disabled={loading}
+                className="w-full"
               >
+                {loading ? (
+                  <>
+                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                    Sending...
+                  </>
+                 ) : (
+                  "Send Message"
+                )}
+              </Button>
+
+              {submitted && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="p-4 bg-green-500/20 border border-green-500 rounded-lg text-green-700 text-center"
+                >
                   ✓ Message sent successfully! I'll get back to you soon.
                 </motion.div>
               )}
