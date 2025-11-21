@@ -85,7 +85,7 @@ export default function HeroSection() {
         >
           Flutter Developer &{" "}
           <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
-            Creative Problem Solver
+             Problem Solver
           </span>
         </motion.h1>
 

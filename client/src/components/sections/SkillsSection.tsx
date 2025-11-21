@@ -22,15 +22,15 @@ const skillVariants = {
 const skillCategories = [
   {
     category: "Mobile Development",
-    skills: ["Flutter", "Dart", "Firebase", "GetX", "Provider", "Bloc"],
+    skills: ["Flutter", "Dart", "Firebase", "Bloc"],
   },
   {
     category: "Web Development",
-    skills: ["React", "TypeScript", "Tailwind CSS", "Next.js", "REST API"],
+    skills: ["React", "REST API"],
   },
   {
-    category: "Backend & Databases",
-    skills: ["Node.js", "Express", "MongoDB", "PostgreSQL", "Firebase"],
+    category: "Databases",
+    skills: [ "SQL", "PostgreSQL", "Firebase"],
   },
   {
     category: "Tools & Practices",
@@ -38,7 +38,7 @@ const skillCategories = [
   },
   {
     category: "Design Patterns",
-    skills: ["MVC", "MVVM", "Repository Pattern", "Singleton", "Observer"],
+    skills: ["MVC", "MVVM","Observer"],
   },
   {
     category: "Testing & DevOps",

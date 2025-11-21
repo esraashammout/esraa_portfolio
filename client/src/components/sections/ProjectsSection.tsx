@@ -48,7 +48,7 @@ const projects = [
     title: "MedTech Web Admin Dashboard",
     description:
       "A powerful admin dashboard for managing medical equipment inventory, orders, rentals, and user accounts. Built with React and modern web technologies.",
-    technologies: ["React", "TypeScript", "Tailwind CSS", "Chart.js"],
+    technologies: ["Flutter", "Dart", "Firebase", "REST API"],
     images: [
       "/projects/medtech-web-login.png",
       "/projects/medtech-web-dashboard.png",
@@ -69,7 +69,7 @@ const projects = [
     title: "Radiology Equipment Management",
     description:
       "Specialized system for managing radiology equipment with advanced imaging capabilities and patient data integration.",
-    technologies: ["Flutter", "Medical APIs", "DICOM Support"],
+    technologies: ["Flutter", "Dart", "Firebase", "REST API"],
     images: ["/projects/radiology.jpg"],
     github: "https://github.com/esraashammout",
     features: [
