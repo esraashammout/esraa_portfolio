@@ -29,9 +29,7 @@ const projects = [
       "A comprehensive medical equipment rental and sales platform built with Flutter. Features include product browsing, rental management, AI-powered assistant, and secure checkout.",
     technologies: ["Flutter", "Dart", "Firebase", "REST API"],
     images: [
-      "/projects/medtech-mobile-login.jpg",
-      "/projects/medtech-mobile-ai.jpg",
-      "/projects/medtech-mobile-checkout.jpg",
+      "/projects/Untitled1mobile.png",
     ],
     github: "https://github.com/esraashammout/medical_devices_app",
     features: [
@@ -48,11 +46,9 @@ const projects = [
     title: "MedTech Web Admin Dashboard",
     description:
       "A powerful admin dashboard for managing medical equipment inventory, orders, rentals, and user accounts. Built with React and modern web technologies.",
-    technologies: ["Flutter", "Dart", "Firebase", "REST API"],
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Chart.js"],
     images: [
-      "/projects/medtech-web-login.png",
-      "/projects/medtech-web-dashboard.png",
-      "/projects/medtech-web-orders.png",
+      "/projects/medical web.png",
     ],
     github: "https://github.com/esraashammout/medical_web_app",
     features: [
@@ -66,22 +62,43 @@ const projects = [
   },
   {
     id: 3,
-    title: "Radiology Equipment Management",
+    title: "Educational Course Platform",
     description:
-      "Specialized system for managing radiology equipment with advanced imaging capabilities and patient data integration.",
-    technologies: ["Flutter", "Dart", "Firebase", "REST API"],
-    images: ["/projects/radiology.jpg"],
+      "Contributed to a cross-platform educational platform using Flutter Web, improving user engagement through a responsive and intuitive UI. Implemented real-time chat functionality to foster communication between users.",
+    technologies: ["Flutter Web", "Dart", "Bloc Pattern", "REST API"],
+    images: [],
     github: "https://github.com/esraashammout",
     features: [
-      "Equipment specifications",
-      "Maintenance tracking",
-      "Usage analytics",
-      "Compliance reporting",
+      "Responsive and intuitive user interface",
+      "Real-time chat functionality between users",
+      "Efficient state management using Bloc pattern",
+      "Integrated video content with smooth playback",
+      "Enhanced user engagement",
+      "Cross-platform compatibility",
+    ],
+  },
+  {
+    id: 4,
+    title: "Pharmacy Management System",
+    description:
+      "Designed and implemented core modules for pharmacy operations, including inventory, sales, and customer management. Developed user-friendly mobile interfaces with REST API integration for real-time data handling.",
+    technologies: ["Flutter", "Dart", "SQLite", "REST API"],
+    images: [
+        "/projects/phermacy.jpg",
+    ],
+    github: "https://github.com/esraashammout",
+    features: [
+      "Inventory management system",
+      "Sales and billing system",
+      "Customer data management",
+      "User-friendly mobile interfaces",
+      "REST API integration for real-time data",
+      "Offline functionality using SQLite",
     ],
   },
 ];
 
-export default function ProjectsSection() {
+export default function ProjectsSection( ) {
   return (
     <section
       id="projects"
@@ -121,7 +138,7 @@ export default function ProjectsSection() {
               className="group bg-gray-50 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
             >
               {/* Project Content */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8">
+              <div className={`grid ${project.images.length > 0 ? 'grid-cols-1 lg:grid-cols-2' : 'grid-cols-1'} gap-8 p-8`}>
                 {/* Text Content */}
                 <div className="flex flex-col justify-between">
                   <div>
@@ -187,26 +204,28 @@ export default function ProjectsSection() {
                 </div>
 
                 {/* Images Carousel */}
-                <div className="flex flex-col gap-4">
-                  {project.images.map((image, idx) => (
-                    <motion.div
-                      key={idx}
-                      whileHover={{ scale: 1.05 }}
-                      className="relative overflow-hidden rounded-lg shadow-md h-64 sm:h-72"
-                    >
-                      <img
-                        src={image}
-                        alt={`${project.title} screenshot ${idx + 1}`}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                        <p className="text-white text-sm font-medium">
-                          {`Screenshot ${idx + 1}`}
-                        </p>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
+                {project.images.length > 0 && (
+                  <div className="flex flex-col gap-4">
+                    {project.images.map((image, idx) => (
+                      <motion.div
+                        key={idx}
+                        whileHover={{ scale: 1.05 }}
+                        className="relative overflow-hidden rounded-lg shadow-md h-auto"
+                      >
+                        <img
+                          src={image}
+                          alt={`${project.title} screenshot ${idx + 1}`}
+                          className="w-full h-auto object-contain group-hover:scale-110 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                          <p className="text-white text-sm font-medium">
+                            {`Screenshot ${idx + 1}`}
+                          </p>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                )}
               </div>
             </motion.div>
           ))}
@@ -241,5 +260,5 @@ export default function ProjectsSection() {
         </motion.div>
       </div>
     </section>
-  );
+   );
 }
