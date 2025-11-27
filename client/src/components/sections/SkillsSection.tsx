@@ -50,7 +50,10 @@ export default function SkillsSection() {
   return (
     <section
       id="skills"
-      className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50"
+      className="py-20 px-4 sm:px-6 lg:px-8 text-white"
+      style={{
+        background: `linear-gradient(135deg, #000000 0%, #1a5cff 100%)`,
+      }}
       data-aos="fade-up"
     >
       <div className="max-w-6xl mx-auto">
@@ -62,9 +65,11 @@ export default function SkillsSection() {
           transition={{ duration: 0.8 } as any}
           viewport={{ once: false }}
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+          {/* Dark Mode: text-gray-100 for white text */}
+          <h2 className="text-4xl sm:text-5xl font-bold text-gray-100 mb-4">
             Skills & Expertise
           </h2>
+          {/* Blue gradient divider remains blue */}
           <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-blue-800 mx-auto"></div>
         </motion.div>
 
@@ -81,9 +86,11 @@ export default function SkillsSection() {
               key={index}
               variants={skillVariants}
               whileHover={{ y: -5 }}
-              className="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow"
+              // Dark Mode: bg-gray-800 for card background, shadow-xl for better visibility
+              className="bg-gray-800 p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow"
             >
-              <h3 className="text-xl font-bold text-gray-900 mb-6">
+              {/* Dark Mode: text-gray-100 for white text */}
+              <h3 className="text-xl font-bold text-gray-100 mb-6">
                 {category.category}
               </h3>
 
@@ -97,8 +104,10 @@ export default function SkillsSection() {
                     viewport={{ once: false }}
                     className="flex items-center gap-3 group"
                   >
-                    <div className="w-2 h-2 bg-blue-600 rounded-full group-hover:scale-150 transition-transform"></div>
-                    <span className="text-gray-700 font-medium group-hover:text-blue-600 transition-colors">
+                    {/* Blue accent remains blue */}
+                    <div className="w-2 h-2 bg-blue-500 rounded-full group-hover:scale-150 transition-transform"></div>
+                    {/* Dark Mode: text-gray-300 for light text */}
+                    <span className="text-gray-300 font-medium group-hover:text-blue-400 transition-colors">
                       {skill}
                     </span>
                   </motion.div>
@@ -108,9 +117,9 @@ export default function SkillsSection() {
           ))}
         </motion.div>
 
-        {/* Additional Info */}
+        {/* Additional Info - Adjusting blue gradient for better dark mode contrast */}
         <motion.div
-          className="mt-16 bg-gradient-to-r from-blue-600 to-blue-800 rounded-xl p-8 sm:p-12 text-white text-center"
+          className="mt-16 bg-gradient-to-r from-black-500 to-blue-700 rounded-xl p-8 sm:p-12 text-white text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}

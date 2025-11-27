@@ -69,7 +69,13 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 px-4 bg-gradient-to-b from-background to-secondary/20">
+    <section
+      id="contact"
+      className="py-20 px-4 text-white"
+      style={{
+        background: `linear-gradient(135deg, #000000 0%, #1a5cff 100%)`,
+      }}
+    >
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -78,8 +84,10 @@ export default function ContactSection() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Get In Touch</h2>
-          <p className="text-lg text-muted-foreground">
+          {/* Dark Mode: text-gray-100 for white text */}
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-100 mb-4">Get In Touch</h2>
+          {/* Dark Mode: text-gray-300 for light text */}
+          <p className="text-lg text-gray-300">
             Have a project in mind? Let's collaborate and create something amazing together.
           </p>
         </motion.div>
@@ -94,14 +102,17 @@ export default function ContactSection() {
             className="space-y-8"
           >
             <motion.div variants={itemVariants} className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                <Mail className="w-6 h-6 text-primary" />
+              {/* Blue accent remains blue/light blue */}
+              <div className="w-12 h-12 rounded-full bg-blue-900 flex items-center justify-center flex-shrink-0">
+                <Mail className="w-6 h-6 text-blue-400" />
               </div>
               <div>
-                <h3 className="font-semibold text-lg mb-1">Email</h3>
+                {/* Dark Mode: text-gray-100 for white text */}
+                <h3 className="font-semibold text-lg text-gray-100 mb-1">Email</h3>
                 <a
                   href="mailto:esraashammout788@gmail.com"
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  // Dark Mode: text-gray-300 for link, hover:text-blue-400
+                  className="text-gray-300 hover:text-blue-400 transition-colors"
                 >
                   esraashammout788@gmail.com
                 </a>
@@ -109,14 +120,17 @@ export default function ContactSection() {
             </motion.div>
 
             <motion.div variants={itemVariants} className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                <Phone className="w-6 h-6 text-primary" />
+              {/* Blue accent remains blue/light blue */}
+              <div className="w-12 h-12 rounded-full bg-blue-900 flex items-center justify-center flex-shrink-0">
+                <Phone className="w-6 h-6 text-blue-400" />
               </div>
               <div>
-                <h3 className="font-semibold text-lg mb-1">Phone</h3>
+                {/* Dark Mode: text-gray-100 for white text */}
+                <h3 className="font-semibold text-lg text-gray-100 mb-1">Phone</h3>
                 <a
                   href="tel:+963984047425"
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  // Dark Mode: text-gray-300 for link, hover:text-blue-400
+                  className="text-gray-300 hover:text-blue-400 transition-colors"
                 >
                   +963 984 047 425
                 </a>
@@ -124,13 +138,15 @@ export default function ContactSection() {
             </motion.div>
 
             <motion.div variants={itemVariants} className="pt-8">
-              <h3 className="font-semibold text-lg mb-4">Follow Me</h3>
+              {/* Dark Mode: text-gray-100 for white text */}
+              <h3 className="font-semibold text-lg text-gray-100 mb-4">Follow Me</h3>
               <div className="flex gap-4">
                 <a
                   href="https://github.com/esraashammout"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary hover:text-white transition-all"
+                  // Dark Mode: bg-blue-900, hover:bg-blue-600, text-blue-300
+                  className="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center text-blue-300 hover:bg-blue-600 hover:text-white transition-all"
                 >
                   <span className="text-sm font-bold">GH</span>
                 </a>
@@ -138,7 +154,8 @@ export default function ContactSection() {
                   href="https://linkedin.com/in/esraa-shammout"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary hover:text-white transition-all"
+                  // Dark Mode: bg-blue-900, hover:bg-blue-600, text-blue-300
+                  className="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center text-blue-300 hover:bg-blue-600 hover:text-white transition-all"
                 >
                   <span className="text-sm font-bold">LI</span>
                 </a>
@@ -152,11 +169,13 @@ export default function ContactSection() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="bg-card rounded-lg p-8 border border-border"
+            // Dark Mode: bg-gray-800 for card background, border-gray-700
+            className="bg-gray-800 rounded-lg p-8 border border-gray-700"
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label className="block text-sm font-medium mb-2">Name</label>
+                {/* Dark Mode: text-gray-100 for label */}
+                <label className="block text-sm font-medium text-gray-100 mb-2">Name</label>
                 <Input
                   type="text"
                   name="name"
@@ -165,12 +184,14 @@ export default function ContactSection() {
                   placeholder="Your name"
                   required
                   disabled={loading}
-                  className="w-full"
+                  // Dark Mode: bg-gray-700, border-gray-600, text-gray-100
+                  className="w-full bg-gray-700 border-gray-600 text-gray-100 placeholder-gray-400"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">Email</label>
+                {/* Dark Mode: text-gray-100 for label */}
+                <label className="block text-sm font-medium text-gray-100 mb-2">Email</label>
                 <Input
                   type="email"
                   name="email"
@@ -179,12 +200,14 @@ export default function ContactSection() {
                   placeholder="your@email.com"
                   required
                   disabled={loading}
-                  className="w-full"
+                  // Dark Mode: bg-gray-700, border-gray-600, text-gray-100
+                  className="w-full bg-gray-700 border-gray-600 text-gray-100 placeholder-gray-400"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">Message</label>
+                {/* Dark Mode: text-gray-100 for label */}
+                <label className="block text-sm font-medium text-gray-100 mb-2">Message</label>
                 <Textarea
                   name="message"
                   value={formData.message}
@@ -193,14 +216,16 @@ export default function ContactSection() {
                   required
                   disabled={loading}
                   rows={5}
-                  className="w-full"
+                  // Dark Mode: bg-gray-700, border-gray-600, text-gray-100
+                  className="w-full bg-gray-700 border-gray-600 text-gray-100 placeholder-gray-400"
                 />
               </div>
 
               <Button
                 type="submit"
                 disabled={loading}
-                className="w-full"
+                // Blue button remains blue
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white"
               >
                 {loading ? (
                   <>
@@ -216,7 +241,8 @@ export default function ContactSection() {
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="p-4 bg-green-500/20 border border-green-500 rounded-lg text-green-700 text-center"
+                  // Dark Mode: bg-green-900/50, border-green-600, text-green-400
+                  className="p-4 bg-green-900/50 border border-green-600 rounded-lg text-green-400 text-center"
                 >
                   ✓ Message sent successfully! I'll get back to you soon.
                 </motion.div>

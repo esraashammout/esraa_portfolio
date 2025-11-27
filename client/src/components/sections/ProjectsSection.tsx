@@ -102,7 +102,10 @@ export default function ProjectsSection( ) {
   return (
     <section
       id="projects"
-      className="py-20 px-4 sm:px-6 lg:px-8 bg-white"
+      className="py-20 px-4 sm:px-6 lg:px-8 text-white"
+      style={{
+        background: `linear-gradient(135deg, #000000 0%, #1a5cff 100%)`,
+      }}
       data-aos="fade-up"
     >
       <div className="max-w-6xl mx-auto">
@@ -114,11 +117,14 @@ export default function ProjectsSection( ) {
           transition={{ duration: 0.8 } as any}
           viewport={{ once: false }}
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+          {/* Dark Mode: text-gray-100 for white text */}
+          <h2 className="text-4xl sm:text-5xl font-bold text-gray-100 mb-4">
             Featured Projects
           </h2>
+          {/* Blue gradient divider remains blue */}
           <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-blue-800 mx-auto mb-4"></div>
-          <p className="text-lg text-gray-600">
+          {/* Dark Mode: text-gray-300 for light text */}
+          <p className="text-lg text-gray-300">
             Showcasing my best work in mobile and web development
           </p>
         </motion.div>
@@ -135,32 +141,38 @@ export default function ProjectsSection( ) {
             <motion.div
               key={project.id}
               variants={itemVariants}
-              className="group bg-gray-50 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+              // Dark Mode: bg-gray-800 for card background, shadow-xl for better visibility
+              className="group bg-gray-800 rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300"
             >
               {/* Project Content */}
               <div className={`grid ${project.images.length > 0 ? 'grid-cols-1 lg:grid-cols-2' : 'grid-cols-1'} gap-8 p-8`}>
                 {/* Text Content */}
                 <div className="flex flex-col justify-between">
                   <div>
-                    <h3 className="text-3xl font-bold text-gray-900 mb-4">
+                    {/* Dark Mode: text-gray-100 for white text */}
+                    <h3 className="text-3xl font-bold text-gray-100 mb-4">
                       {project.title}
                     </h3>
-                    <p className="text-gray-600 text-lg mb-6">
+                    {/* Dark Mode: text-gray-300 for light text */}
+                    <p className="text-gray-300 text-lg mb-6">
                       {project.description}
                     </p>
 
                     {/* Features */}
                     <div className="mb-6">
-                      <h4 className="font-semibold text-gray-900 mb-3">
+                      {/* Dark Mode: text-gray-100 for white text */}
+                      <h4 className="font-semibold text-gray-100 mb-3">
                         Key Features:
                       </h4>
                       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                         {project.features.map((feature, idx) => (
                           <li
                             key={idx}
-                            className="flex items-center gap-2 text-gray-700"
+                            // Dark Mode: text-gray-300 for light text
+                            className="flex items-center gap-2 text-gray-300"
                           >
-                            <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
+                            {/* Blue accent remains blue */}
+                            <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
                             {feature}
                           </li>
                         ))}
@@ -170,14 +182,16 @@ export default function ProjectsSection( ) {
 
                   {/* Technologies */}
                   <div className="mb-6">
-                    <h4 className="font-semibold text-gray-900 mb-3">
+                    {/* Dark Mode: text-gray-100 for white text */}
+                    <h4 className="font-semibold text-gray-100 mb-3">
                       Technologies:
                     </h4>
                     <div className="flex flex-wrap gap-2">
                       {project.technologies.map((tech, idx) => (
                         <span
                           key={idx}
-                          className="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium"
+                          // Blue accent remains blue/light blue
+                          className="px-4 py-2 bg-blue-900 text-blue-300 rounded-full text-sm font-medium"
                         >
                           {tech}
                         </span>
@@ -189,6 +203,7 @@ export default function ProjectsSection( ) {
                   <div className="flex gap-4">
                     <Button
                       asChild
+                      // Blue button remains blue
                       className="bg-blue-600 hover:bg-blue-700 text-white flex items-center gap-2"
                     >
                       <a
@@ -237,7 +252,8 @@ export default function ProjectsSection( ) {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 } as any}
           viewport={{ once: false }}
-          className="mt-16 text-center p-8 bg-gradient-to-r from-blue-600 to-blue-800 rounded-xl text-white"
+          // Blue gradient remains blue
+          className="mt-16 text-center p-8 bg-gradient-to-r from-black-600 to-black-800 rounded-xl text-white"
         >
           <h3 className="text-2xl font-bold mb-4">Want to see more?</h3>
           <p className="text-blue-100 mb-6">
@@ -245,6 +261,7 @@ export default function ProjectsSection( ) {
           </p>
           <Button
             asChild
+            // White button remains white for contrast
             className="bg-white text-blue-600 hover:bg-gray-100 font-semibold"
           >
             <a

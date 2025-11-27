@@ -45,7 +45,11 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50"
+      // Dark Mode: bg-gray-900 for black background
+      className="py-20 px-4 sm:px-6 lg:px-8 text-white" 
+      style={{
+        background: `linear-gradient(135deg, #000000 0%, #1a5cff 100%)`,
+      }}
       data-aos="fade-up"
     >
       <div className="max-w-6xl mx-auto">
@@ -57,9 +61,11 @@ export default function AboutSection() {
           transition={{ duration: 0.8 } as any}
           viewport={{ once: false }}
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+          {/* Dark Mode: text-white for white text, text-gray-100 for a slight contrast */}
+          <h2 className="text-4xl sm:text-5xl font-bold text-gray-100 mb-4">
             About Me
           </h2>
+          {/* Blue gradient divider remains blue */}
           <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-blue-800 mx-auto"></div>
         </motion.div>
 
@@ -74,7 +80,8 @@ export default function AboutSection() {
           >
             <motion.p
               variants={itemVariants}
-              className="text-lg text-gray-700 mb-6 leading-relaxed"
+              // Dark Mode: text-gray-300 for white/light text
+              className="text-lg text-gray-300 mb-6 leading-relaxed"
             >
               I'm a detail-oriented Flutter developer with 1.5+ years of
               experience building beautiful, functional applications. My journey
@@ -84,7 +91,8 @@ export default function AboutSection() {
 
             <motion.p
               variants={itemVariants}
-              className="text-lg text-gray-700 mb-6 leading-relaxed"
+              // Dark Mode: text-gray-300 for white/light text
+              className="text-lg text-gray-300 mb-6 leading-relaxed"
             >
               I specialize in cross-platform mobile development with Flutter,
               complemented by web development skills. I'm proficient in
@@ -94,7 +102,8 @@ export default function AboutSection() {
 
             <motion.p
               variants={itemVariants}
-              className="text-lg text-gray-700 leading-relaxed"
+              // Dark Mode: text-gray-300 for white/light text
+              className="text-lg text-gray-300 leading-relaxed"
             >
               Beyond coding, I'm committed to continuous learning, staying
               updated with the latest technologies, and collaborating with teams
@@ -117,17 +126,21 @@ export default function AboutSection() {
                   key={index}
                   variants={itemVariants}
                   whileHover={{ x: 10 }}
-                  className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+                  // Dark Mode: bg-gray-800 for card background, shadow-xl for better visibility
+                  className="bg-gray-800 p-6 rounded-lg shadow-xl hover:shadow-2xl transition-shadow"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Icon className="w-6 h-6 text-blue-600" />
+                    {/* Blue accent remains blue/light blue */}
+                    <div className="w-12 h-12 bg-blue-900 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Icon className="w-6 h-6 text-blue-400" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">
+                      {/* Dark Mode: text-gray-100 for white/light text */}
+                      <h3 className="text-xl font-bold text-gray-100 mb-2">
                         {highlight.title}
                       </h3>
-                      <p className="text-gray-600">{highlight.description}</p>
+                      {/* Dark Mode: text-gray-400 for light gray description text */}
+                      <p className="text-gray-400">{highlight.description}</p>
                     </div>
                   </div>
                 </motion.div>

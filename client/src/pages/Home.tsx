@@ -20,7 +20,9 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
+    // The background for the main container is set to black.
+    // The individual sections (Hero, About, etc.) will use the gradient background.
+    <div className="min-h-screen bg-black">
       {/* Hero Section */}
       <HeroSection />
 

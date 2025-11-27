@@ -36,11 +36,14 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-blue-50 to-white px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden text-white"
+      style={{
+        background: `linear-gradient(135deg, #000000ff 0%, #1a5cff 100%)`,
+      }}
     >
-      {/* Animated Background Elements */}
+      {/* Animated Background Elements - Adjusting colors for dark mode */}
         <motion.div
-        className="absolute top-20 right-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20"
+        className="absolute top-20 right-10 w-72 h-72 bg-blue-900 rounded-full mix-blend-screen filter blur-3xl opacity-30"
         animate={{
           y: [0, 50, 0],
           x: [0, 30, 0],
@@ -52,7 +55,7 @@ export default function HeroSection() {
         } as any}
       />
       <motion.div
-        className="absolute bottom-20 left-10 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20"
+        className="absolute bottom-20 left-10 w-72 h-72 bg-blue-800 rounded-full mix-blend-screen filter blur-3xl opacity-30"
         animate={{
           y: [0, -50, 0],
           x: [0, -30, 0],
@@ -72,7 +75,8 @@ export default function HeroSection() {
       >
         {/* Badge */}
         <motion.div variants={itemVariants} className="mb-6">
-          <span className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
+          {/* Dark Mode: bg-blue-900 for badge background, text-blue-300 for text */}
+          <span className="inline-flex items-center gap-2 px-4 py-2 bg-blue-900 text-blue-300 rounded-full text-sm font-medium">
             <Zap className="w-4 h-4" />
             Welcome to My Portfolio
           </span>
@@ -81,10 +85,12 @@ export default function HeroSection() {
         {/* Main Heading */}
         <motion.h1
           variants={itemVariants}
-          className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight"
+          // Dark Mode: text-gray-100 for white text
+          className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-100 mb-6 leading-tight"
         >
           Flutter Developer &{" "}
-          <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+          {/* Blue gradient remains blue */}
+          <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
              Problem Solver
           </span>
         </motion.h1>
@@ -92,7 +98,8 @@ export default function HeroSection() {
         {/* Subtitle */}
         <motion.p
           variants={itemVariants}
-          className="text-lg sm:text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed"
+          // Dark Mode: text-gray-300 for light text
+          className="text-lg sm:text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed"
         >
           I build beautiful, scalable mobile and web applications with 1.5+ years
           of experience. Specialized in Flutter, Clean Architecture, and modern
@@ -106,6 +113,7 @@ export default function HeroSection() {
         >
           <Button
             onClick={() => scrollToSection("#projects")}
+            // Blue button remains blue
             className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg font-semibold group"
           >
             View My Work
@@ -114,7 +122,8 @@ export default function HeroSection() {
           <Button
             onClick={() => scrollToSection("#contact")}
             variant="outline"
-            className="px-8 py-3 text-lg font-semibold border-2 border-gray-300 hover:border-blue-600 hover:text-blue-600"
+            // Dark Mode: border-gray-600, text-gray-100, hover:border-blue-400, hover:text-blue-400
+            className="px-8 py-3 text-lg font-semibold border-2 border-gray-600 text-gray-100 hover:border-blue-400 hover:text-blue-400 bg-transparent"
           >
             Get In Touch
           </Button>
@@ -123,7 +132,8 @@ export default function HeroSection() {
         {/* Stats */}
         <motion.div
           variants={itemVariants}
-          className="mt-16 grid grid-cols-3 gap-8 pt-12 border-t border-gray-200"
+          // Dark Mode: border-gray-700
+          className="mt-16 grid grid-cols-3 gap-8 pt-12 border-t border-gray-700"
         >
           {[
             { number: "1.5+", label: "Years Experience" },
@@ -135,10 +145,12 @@ export default function HeroSection() {
               whileHover={{ scale: 1.05 }}
               className="text-center"
             >
-              <div className="text-3xl sm:text-4xl font-bold text-blue-600 mb-2">
+              {/* Blue text remains blue */}
+              <div className="text-3xl sm:text-4xl font-bold text-blue-400 mb-2">
                 {stat.number}
               </div>
-              <div className="text-sm sm:text-base text-gray-600">
+              {/* Dark Mode: text-gray-400 for light text */}
+              <div className="text-sm sm:text-base text-gray-400">
                 {stat.label}
               </div>
             </motion.div>
@@ -152,9 +164,10 @@ export default function HeroSection() {
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
-        <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex items-start justify-center p-2">
+        {/* Dark Mode: border-gray-500, bg-gray-500 */}
+        <div className="w-6 h-10 border-2 border-gray-500 rounded-full flex items-start justify-center p-2">
           <motion.div
-            className="w-1 h-2 bg-gray-400 rounded-full"
+            className="w-1 h-2 bg-gray-500 rounded-full"
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
           />
