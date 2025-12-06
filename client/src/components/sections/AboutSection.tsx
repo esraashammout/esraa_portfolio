@@ -83,7 +83,7 @@ export default function AboutSection() {
               // Dark Mode: text-gray-300 for white/light text
               className="text-lg text-gray-300 mb-6 leading-relaxed"
             >
-              I'm a detail-oriented Flutter developer with 1.5+ years of
+              I'm a detail-oriented Flutter developer with 3+ years of
               experience building beautiful, functional applications. My journey
               in software development has been driven by a passion for creating
               solutions that make a real impact.

@@ -101,7 +101,7 @@ export default function HeroSection() {
           // Dark Mode: text-gray-300 for light text
           className="text-lg sm:text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed"
         >
-          I build beautiful, scalable mobile and web applications with 1.5+ years
+          I build beautiful, scalable mobile and web applications with 3+ years
           of experience. Specialized in Flutter, Clean Architecture, and modern
           design patterns.
         </motion.p>
@@ -136,7 +136,7 @@ export default function HeroSection() {
           className="mt-16 grid grid-cols-3 gap-8 pt-12 border-t border-gray-700"
         >
           {[
-            { number: "1.5+", label: "Years Experience" },
+            { number: "3+", label: "Years Experience" },
             { number: "10+", label: "Projects Completed" },
             { number: "100%", label: "Client Satisfaction" },
           ].map((stat, index) => (

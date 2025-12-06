@@ -29,7 +29,7 @@ const projects = [
       "A comprehensive medical equipment rental and sales platform built with Flutter. Features include product browsing, rental management, AI-powered assistant, and secure checkout.",
     technologies: ["Flutter", "Dart", "Firebase", "REST API"],
     images: [
-      "/projects/Untitled1mobile.png",
+      "/projects/download1.png",
     ],
     github: "https://github.com/esraashammout/medical_devices_app",
     features: [
@@ -48,7 +48,7 @@ const projects = [
       "A powerful admin dashboard for managing medical equipment inventory, orders, rentals, and user accounts. Built with React and modern web technologies.",
     technologies: ["React", "TypeScript", "Tailwind CSS", "Chart.js"],
     images: [
-      "/projects/medical web.png",
+      "/projects/download2.png",
     ],
     github: "https://github.com/esraashammout/medical_web_app",
     features: [
@@ -84,7 +84,7 @@ const projects = [
       "Designed and implemented core modules for pharmacy operations, including inventory, sales, and customer management. Developed user-friendly mobile interfaces with REST API integration for real-time data handling.",
     technologies: ["Flutter", "Dart", "SQLite", "REST API"],
     images: [
-        "/projects/phermacy.jpg",
+        "/projects/download3.png",
     ],
     github: "https://github.com/esraashammout",
     features: [
