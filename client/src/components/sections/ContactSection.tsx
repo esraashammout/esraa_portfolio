@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, Loader2 } from "lucide-react";
+import { Mail, Phone, Loader2, Github, Linkedin, Send, MessageCircle, Sparkles } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -34,7 +34,7 @@ export default function ContactSection() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData ),
+        body: JSON.stringify(formData),
       });
 
       if (response.ok) {
@@ -71,23 +71,60 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="py-20 px-4 text-white"
+      className="py-24 px-4 text-white relative overflow-hidden"
       style={{
-        background: `linear-gradient(135deg, #000000 0%, #1a5cff 100%)`,
+        background: `linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 50%, #0f0f2a 100%)`,
       }}
     >
-      <div className="max-w-4xl mx-auto">
+      {/* Background Decorations */}
+      <motion.div
+        className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-3xl"
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.1, 0.15, 0.1],
+        }}
+        transition={{ duration: 8, repeat: Infinity }}
+      />
+      <motion.div
+        className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-pink-600/10 rounded-full blur-3xl"
+        animate={{
+          scale: [1.2, 1, 1.2],
+          opacity: [0.1, 0.2, 0.1],
+        }}
+        transition={{ duration: 10, repeat: Infinity }}
+      />
+
+      <div className="max-w-5xl mx-auto relative z-10">
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
-          {/* Dark Mode: text-gray-100 for white text */}
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-100 mb-4">Get In Touch</h2>
-          {/* Dark Mode: text-gray-300 for light text */}
-          <p className="text-lg text-gray-300">
+          <motion.div
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/20 border border-purple-500/30 rounded-full text-purple-300 text-sm font-medium mb-6"
+          >
+            <MessageCircle className="w-4 h-4" />
+            Let's Connect
+          </motion.div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+            Get In{" "}
+            <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-purple-600 bg-clip-text text-transparent">
+              Touch
+            </span>
+          </h2>
+          <motion.div
+            className="w-24 h-1.5 bg-gradient-to-r from-purple-600 via-pink-500 to-purple-600 mx-auto mb-4 rounded-full"
+            initial={{ width: 0 }}
+            whileInView={{ width: 96 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+          />
+          <p className="text-lg text-gray-400 max-w-xl mx-auto">
             Have a project in mind? Let's collaborate and create something amazing together.
           </p>
         </motion.div>
@@ -95,70 +132,87 @@ export default function ContactSection() {
         <div className="grid md:grid-cols-2 gap-12">
           {/* Contact Info */}
           <motion.div
-            variants={containerVariants}
+            variants={containerVariants as any}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="space-y-8"
+            className="space-y-6"
           >
-            <motion.div variants={itemVariants} className="flex items-start gap-4">
-              {/* Blue accent remains blue/light blue */}
-              <div className="w-12 h-12 rounded-full bg-blue-900 flex items-center justify-center flex-shrink-0">
-                <Mail className="w-6 h-6 text-blue-400" />
-              </div>
+            {/* Email Card */}
+            <motion.div 
+              variants={itemVariants as any} 
+              whileHover={{ x: 10, scale: 1.02 }}
+              className="flex items-start gap-4 p-5 bg-gradient-to-br from-gray-900/80 to-gray-800/50 rounded-2xl border border-gray-700/50 hover:border-purple-500/50 transition-all backdrop-blur-sm"
+            >
+              <motion.div 
+                whileHover={{ rotate: 360 }}
+                transition={{ duration: 0.6 }}
+                className="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center flex-shrink-0 shadow-lg shadow-purple-500/30"
+              >
+                <Mail className="w-7 h-7 text-white" />
+              </motion.div>
               <div>
-                {/* Dark Mode: text-gray-100 for white text */}
-                <h3 className="font-semibold text-lg text-gray-100 mb-1">Email</h3>
+                <h3 className="font-bold text-lg text-white mb-1">Email</h3>
                 <a
                   href="mailto:esraashammout788@gmail.com"
-                  // Dark Mode: text-gray-300 for link, hover:text-blue-400
-                  className="text-gray-300 hover:text-blue-400 transition-colors"
+                  className="text-gray-400 hover:text-purple-400 transition-colors"
                 >
                   esraashammout788@gmail.com
                 </a>
               </div>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="flex items-start gap-4">
-              {/* Blue accent remains blue/light blue */}
-              <div className="w-12 h-12 rounded-full bg-blue-900 flex items-center justify-center flex-shrink-0">
-                <Phone className="w-6 h-6 text-blue-400" />
-              </div>
+            {/* Phone Card */}
+            <motion.div 
+              variants={itemVariants as any}
+              whileHover={{ x: 10, scale: 1.02 }}
+              className="flex items-start gap-4 p-5 bg-gradient-to-br from-gray-900/80 to-gray-800/50 rounded-2xl border border-gray-700/50 hover:border-purple-500/50 transition-all backdrop-blur-sm"
+            >
+              <motion.div 
+                whileHover={{ rotate: 360 }}
+                transition={{ duration: 0.6 }}
+                className="w-14 h-14 rounded-xl bg-gradient-to-br from-pink-600 to-purple-600 flex items-center justify-center flex-shrink-0 shadow-lg shadow-pink-500/30"
+              >
+                <Phone className="w-7 h-7 text-white" />
+              </motion.div>
               <div>
-                {/* Dark Mode: text-gray-100 for white text */}
-                <h3 className="font-semibold text-lg text-gray-100 mb-1">Phone</h3>
+                <h3 className="font-bold text-lg text-white mb-1">Phone</h3>
                 <a
                   href="tel:+963984047425"
-                  // Dark Mode: text-gray-300 for link, hover:text-blue-400
-                  className="text-gray-300 hover:text-blue-400 transition-colors"
+                  className="text-gray-400 hover:text-purple-400 transition-colors"
                 >
                   +963 984 047 425
                 </a>
               </div>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="pt-8">
-              {/* Dark Mode: text-gray-100 for white text */}
-              <h3 className="font-semibold text-lg text-gray-100 mb-4">Follow Me</h3>
+            {/* Social Links */}
+            <motion.div variants={itemVariants as any} className="pt-4">
+              <h3 className="font-bold text-lg text-white mb-4 flex items-center gap-2">
+                <Sparkles className="w-5 h-5 text-purple-400" />
+                Follow Me
+              </h3>
               <div className="flex gap-4">
-                <a
+                <motion.a
                   href="https://github.com/esraashammout"
                   target="_blank"
                   rel="noopener noreferrer"
-                  // Dark Mode: bg-blue-900, hover:bg-blue-600, text-blue-300
-                  className="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center text-blue-300 hover:bg-blue-600 hover:text-white transition-all"
+                  whileHover={{ scale: 1.1, y: -3 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-12 h-12 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-purple-500 hover:shadow-lg hover:shadow-purple-500/20 transition-all"
                 >
-                  <span className="text-sm font-bold">GH</span>
-                </a>
-                <a
+                  <Github className="w-6 h-6" />
+                </motion.a>
+                <motion.a
                   href="https://linkedin.com/in/esraa-shammout"
                   target="_blank"
                   rel="noopener noreferrer"
-                  // Dark Mode: bg-blue-900, hover:bg-blue-600, text-blue-300
-                  className="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center text-blue-300 hover:bg-blue-600 hover:text-white transition-all"
+                  whileHover={{ scale: 1.1, y: -3 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-12 h-12 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/20 transition-all"
                 >
-                  <span className="text-sm font-bold">LI</span>
-                </a>
+                  <Linkedin className="w-6 h-6" />
+                </motion.a>
               </div>
             </motion.div>
           </motion.div>
@@ -169,13 +223,11 @@ export default function ContactSection() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            // Dark Mode: bg-gray-800 for card background, border-gray-700
-            className="bg-gray-800 rounded-lg p-8 border border-gray-700"
+            className="bg-gradient-to-br from-gray-900/80 to-gray-800/50 rounded-2xl p-8 border border-gray-700/50 backdrop-blur-sm"
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                {/* Dark Mode: text-gray-100 for label */}
-                <label className="block text-sm font-medium text-gray-100 mb-2">Name</label>
+                <label className="block text-sm font-medium text-gray-300 mb-2">Name</label>
                 <Input
                   type="text"
                   name="name"
@@ -184,14 +236,12 @@ export default function ContactSection() {
                   placeholder="Your name"
                   required
                   disabled={loading}
-                  // Dark Mode: bg-gray-700, border-gray-600, text-gray-100
-                  className="w-full bg-gray-700 border-gray-600 text-gray-100 placeholder-gray-400"
+                  className="w-full bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 focus:border-purple-500 focus:ring-purple-500/20 rounded-xl"
                 />
               </div>
 
               <div>
-                {/* Dark Mode: text-gray-100 for label */}
-                <label className="block text-sm font-medium text-gray-100 mb-2">Email</label>
+                <label className="block text-sm font-medium text-gray-300 mb-2">Email</label>
                 <Input
                   type="email"
                   name="email"
@@ -200,14 +250,12 @@ export default function ContactSection() {
                   placeholder="your@email.com"
                   required
                   disabled={loading}
-                  // Dark Mode: bg-gray-700, border-gray-600, text-gray-100
-                  className="w-full bg-gray-700 border-gray-600 text-gray-100 placeholder-gray-400"
+                  className="w-full bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 focus:border-purple-500 focus:ring-purple-500/20 rounded-xl"
                 />
               </div>
 
               <div>
-                {/* Dark Mode: text-gray-100 for label */}
-                <label className="block text-sm font-medium text-gray-100 mb-2">Message</label>
+                <label className="block text-sm font-medium text-gray-300 mb-2">Message</label>
                 <Textarea
                   name="message"
                   value={formData.message}
@@ -216,33 +264,35 @@ export default function ContactSection() {
                   required
                   disabled={loading}
                   rows={5}
-                  // Dark Mode: bg-gray-700, border-gray-600, text-gray-100
-                  className="w-full bg-gray-700 border-gray-600 text-gray-100 placeholder-gray-400"
+                  className="w-full bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 focus:border-purple-500 focus:ring-purple-500/20 rounded-xl resize-none"
                 />
               </div>
 
-              <Button
-                type="submit"
-                disabled={loading}
-                // Blue button remains blue
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white"
-              >
-                {loading ? (
-                  <>
-                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                    Sending...
-                  </>
-                 ) : (
-                  "Send Message"
-                )}
-              </Button>
+              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                <Button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white py-4 text-lg font-semibold shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 transition-all rounded-xl"
+                >
+                  {loading ? (
+                    <>
+                      <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5 mr-2" />
+                      Send Message
+                    </>
+                  )}
+                </Button>
+              </motion.div>
 
               {submitted && (
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  // Dark Mode: bg-green-900/50, border-green-600, text-green-400
-                  className="p-4 bg-green-900/50 border border-green-600 rounded-lg text-green-400 text-center"
+                  className="p-4 bg-green-500/10 border border-green-500/30 rounded-xl text-green-400 text-center"
                 >
                   ✓ Message sent successfully! I'll get back to you soon.
                 </motion.div>
