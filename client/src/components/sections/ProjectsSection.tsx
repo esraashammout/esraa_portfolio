@@ -64,9 +64,9 @@ const projects = [
       "/projects/bank/screen13.jpg",
       "/projects/bank/screen14.jpg",
     ],
-    github: "https://github.com/esraashammout",
+    github: "https://github.com/esraashammout/Banking_System",
     isFeatured: true,
-    date: "Dec 2024",
+    date: "Dec 2025",
     features: [
       "Account management & transactions",
       "Scheduled payments system",
