@@ -138,124 +138,166 @@ export default function HeroSection() {
         />
       ))}
 
-      <motion.div
-        className="max-w-4xl mx-auto text-center z-10"
-        variants={containerVariants as any}
-        initial="hidden"
-        animate="visible"
-      >
-        {/* Badge */}
-        <motion.div variants={itemVariants as any} className="mb-8">
-          <motion.span 
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-sm text-purple-300 rounded-full text-sm font-medium border border-purple-500/30"
-            whileHover={{ scale: 1.05 }}
-            animate={{
-              boxShadow: [
-                "0 0 20px rgba(139, 92, 246, 0)",
-                "0 0 20px rgba(139, 92, 246, 0.3)",
-                "0 0 20px rgba(139, 92, 246, 0)",
-              ],
-            }}
-            transition={{ duration: 2, repeat: Infinity }}
-          >
-            <Sparkles className="w-4 h-4" />
-            Welcome to My Portfolio
-            <Zap className="w-4 h-4" />
-          </motion.span>
-        </motion.div>
-
-        {/* Main Heading */}
-        <motion.h1
-          variants={itemVariants as any}
-          className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
-        >
-          <motion.span
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-          >
-            Flutter Developer
-          </motion.span>
-          <br />
-          <motion.span 
-            className="bg-gradient-to-r from-purple-400 via-pink-500 to-purple-600 bg-clip-text text-transparent"
-            animate={{
-              backgroundPosition: ["0%", "100%", "0%"],
-            }}
-            transition={{ duration: 5, repeat: Infinity }}
-            style={{ backgroundSize: "200%" }}
-          >
-            & Problem Solver
-          </motion.span>
-        </motion.h1>
-
-        {/* Subtitle */}
-        <motion.p
-          variants={itemVariants as any}
-          className="text-lg sm:text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed"
-        >
-          I build beautiful, scalable mobile and web applications with{" "}
-          <span className="text-purple-400 font-semibold">3+ years</span> of experience.
-          Specialized in <span className="text-blue-400 font-semibold">Flutter</span>,{" "}
-          <span className="text-pink-400 font-semibold">Clean Architecture</span>, and modern
-          design patterns.
-        </motion.p>
-
-        {/* CTA Buttons */}
+      <div className="max-w-7xl mx-auto z-10 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8">
+        {/* Left Side - Text Content */}
         <motion.div
-          variants={itemVariants as any}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          className="flex-1 text-center lg:text-left"
+          variants={containerVariants as any}
+          initial="hidden"
+          animate="visible"
         >
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-          <Button
-            onClick={() => scrollToSection("#projects")}
-              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-4 text-lg font-semibold group shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 transition-all"
-          >
-            View My Work
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" />
-          </Button>
-          </motion.div>
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-          <Button
-            onClick={() => scrollToSection("#contact")}
-            variant="outline"
-              className="px-8 py-4 text-lg font-semibold border-2 border-purple-500/50 text-purple-300 hover:border-purple-400 hover:text-purple-200 hover:bg-purple-500/10 bg-transparent backdrop-blur-sm"
-          >
-            Get In Touch
-          </Button>
-          </motion.div>
-        </motion.div>
-
-        {/* Stats */}
-        <motion.div
-          variants={itemVariants as any}
-          className="mt-20 grid grid-cols-3 gap-8 pt-12 border-t border-gray-700/50"
-        >
-          {[
-            { number: "3+", label: "Years Experience", color: "from-purple-400 to-pink-400" },
-            { number: "10+", label: "Projects Completed", color: "from-blue-400 to-cyan-400" },
-            { number: "100%", label: "Client Satisfaction", color: "from-pink-400 to-purple-400" },
-          ].map((stat, index) => (
-            <motion.div
-              key={index}
-              whileHover={{ scale: 1.1, y: -5 }}
-              className="text-center group"
+          {/* Badge */}
+          <motion.div variants={itemVariants as any} className="mb-8">
+            <motion.span 
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-sm text-purple-300 rounded-full text-sm font-medium border border-purple-500/30"
+              whileHover={{ scale: 1.05 }}
+              animate={{
+                boxShadow: [
+                  "0 0 20px rgba(139, 92, 246, 0)",
+                  "0 0 20px rgba(139, 92, 246, 0.3)",
+                  "0 0 20px rgba(139, 92, 246, 0)",
+                ],
+              }}
+              transition={{ duration: 2, repeat: Infinity }}
             >
-              <motion.div 
-                className={`text-4xl sm:text-5xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent mb-2`}
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1 + index * 0.2, type: "spring" }}
-              >
-                {stat.number}
-              </motion.div>
-              <div className="text-sm sm:text-base text-gray-400 group-hover:text-gray-300 transition-colors">
-                {stat.label}
-              </div>
+              <Sparkles className="w-4 h-4" />
+              Welcome to My Portfolio
+              <Zap className="w-4 h-4" />
+            </motion.span>
+          </motion.div>
+
+          {/* Main Heading */}
+          <motion.h1
+            variants={itemVariants as any}
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+          >
+            <motion.span
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+            >
+              Flutter Developer
+            </motion.span>
+            <br />
+            <motion.span 
+              className="bg-gradient-to-r from-purple-400 via-pink-500 to-purple-600 bg-clip-text text-transparent"
+              animate={{
+                backgroundPosition: ["0%", "100%", "0%"],
+              }}
+              transition={{ duration: 5, repeat: Infinity }}
+              style={{ backgroundSize: "200%" }}
+            >
+              & Problem Solver
+            </motion.span>
+          </motion.h1>
+
+          {/* Subtitle */}
+          <motion.p
+            variants={itemVariants as any}
+            className="text-lg sm:text-xl text-gray-300 mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed"
+          >
+            I build beautiful, scalable mobile and web applications with{" "}
+            <span className="text-purple-400 font-semibold">3+ years</span> of experience.
+            Specialized in <span className="text-blue-400 font-semibold">Flutter</span>,{" "}
+            <span className="text-pink-400 font-semibold">Clean Architecture</span>, and modern
+            design patterns.
+          </motion.p>
+
+          {/* CTA Buttons */}
+          <motion.div
+            variants={itemVariants as any}
+            className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center"
+          >
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Button
+              onClick={() => scrollToSection("#projects")}
+                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-4 text-lg font-semibold group shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 transition-all"
+            >
+              View My Work
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" />
+            </Button>
             </motion.div>
-          ))}
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Button
+              onClick={() => scrollToSection("#contact")}
+              variant="outline"
+                className="px-8 py-4 text-lg font-semibold border-2 border-purple-500/50 text-purple-300 hover:border-purple-400 hover:text-purple-200 hover:bg-purple-500/10 bg-transparent backdrop-blur-sm"
+            >
+              Get In Touch
+            </Button>
+            </motion.div>
+          </motion.div>
+
+          {/* Stats */}
+          <motion.div
+            variants={itemVariants as any}
+            className="mt-12 grid grid-cols-3 gap-6 pt-8 border-t border-gray-700/50"
+          >
+            {[
+              { number: "3+", label: "Years Experience", color: "from-purple-400 to-pink-400" },
+              { number: "10+", label: "Projects Completed", color: "from-blue-400 to-cyan-400" },
+              { number: "100%", label: "Client Satisfaction", color: "from-pink-400 to-purple-400" },
+            ].map((stat, index) => (
+              <motion.div
+                key={index}
+                whileHover={{ scale: 1.1, y: -5 }}
+                className="text-center lg:text-left group"
+              >
+                <motion.div 
+                  className={`text-3xl sm:text-4xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent mb-2`}
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 1 + index * 0.2, type: "spring" }}
+                >
+                  {stat.number}
+                </motion.div>
+                <div className="text-xs sm:text-sm text-gray-400 group-hover:text-gray-300 transition-colors">
+                  {stat.label}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </motion.div>
-      </motion.div>
+
+        {/* Right Side - Video */}
+        <motion.div
+          className="flex-1 w-full max-w-lg lg:max-w-xl"
+          initial={{ opacity: 0, x: 50, scale: 0.9 }}
+          animate={{ opacity: 1, x: 0, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+        >
+          <motion.div 
+            className="relative"
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.3 }}
+          >
+            {/* Glow Effect Behind Video */}
+            <div className="absolute -inset-4 bg-gradient-to-r from-purple-600/30 via-pink-600/30 to-blue-600/30 rounded-3xl blur-2xl opacity-60" />
+            
+            {/* Video Container */}
+            <div className="relative bg-gradient-to-br from-purple-900/50 to-pink-900/50 p-2 rounded-2xl border border-purple-500/30 backdrop-blur-sm shadow-2xl shadow-purple-900/50">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full rounded-xl"
+                poster="/hero-poster.jpg"
+              >
+                <source src="/flutter.mp4" type="video/mp4" />
+                {/* Fallback for browsers that don't support video */}
+                Your browser does not support the video tag.
+              </video>
+              
+              {/* Decorative Corner Elements */}
+              <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-purple-400 rounded-tl-lg" />
+              <div className="absolute -top-2 -right-2 w-6 h-6 border-t-2 border-r-2 border-pink-400 rounded-tr-lg" />
+              <div className="absolute -bottom-2 -left-2 w-6 h-6 border-b-2 border-l-2 border-pink-400 rounded-bl-lg" />
+              <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-purple-400 rounded-br-lg" />
+            </div>
+          </motion.div>
+        </motion.div>
+      </div>
 
       {/* Scroll Indicator */}
       <motion.div
